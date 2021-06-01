@@ -30,6 +30,11 @@ init_filenames() {
 	locktext='Type password to unlock...'
 	wallpaper_cmd='feh --bg-fill --no-fehbg'
 	time_format='%H:%M:%S'
+	i3lock_git=false
+
+	# Depending on $i3lock_git
+	modifcolor=ffffffff
+	modifoutlinecolor=ff0000ff
 
 	# override defaults with config
 	theme_rc="$HOME/.config/betterlockscreenrc"
@@ -90,12 +95,17 @@ prelock() {
 lock() {
 	#$1 image path
 
+	if [[ "$i3lock_git" = "true" ]]; then
+		lockargs="--modif-color=$modifcolor --modifoutline-color=$modifoutlinecolor --modifieroutline-width=0.8 $lockargs"
+	fi
+
 	i3lock \
 		-c 00000000 \
 		-t -i "$1" \
-		--time-pos='x+110:h-70' \
+		--time-pos='x+43:h-70' \
 		--date-pos='x+43:h-45' \
-		--clock --date-align 1 --date-str "$locktext" --time-str "$time_format" \
+		--modif-pos='x+280:h-33' \
+		--clock --date-align 1 --date-str "$locktext" --time-align 1 --time-str "$time_format" \
 		--inside-color=$insidecolor --ring-color=$ringcolor --line-uses-inside \
 		--keyhl-color=$keyhlcolor --bshl-color=$bshlcolor --separator-color=$separatorcolor \
 		--insidever-color=$insidevercolor --insidewrong-color=$insidewrongcolor \

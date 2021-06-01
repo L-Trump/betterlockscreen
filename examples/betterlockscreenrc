@@ -1,4 +1,6 @@
-# configuration file for betterlockscreen
+#
+# Configuration for Betterlockscreen
+#
 
 insidecolor=00000000
 ringcolor=ffffffff
@@ -17,3 +19,16 @@ font="sans-serif"
 locktext='Type password to unlock...'
 lock_timeout=5
 time_format='%H:%M:%S'
+
+
+#
+# Advanced Options
+#
+
+# Enables configuration-options not stable released yet! You MUST use a current source-build of i3lock-color for this!
+i3lock_git=false
+
+# GIT-Options
+# These options will only take effect if previous option is true and you fullfill the requirements!
+modifcolor=ffffffff
+modifoutlinecolor=ff0000ff
